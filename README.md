@@ -1,5 +1,5 @@
-
-# Welcome to your CDK Python project!
+There are two parts to the project. The first and main part is the Jupyter notebook (keras_ocr_synthetic_training_public(1).ipynb). The second part is the CDK app, that launches a Notebook instance with the git project as default code repository. Below are some instructions to deploy the CDK application
+# Welcome to your Sagemaker CDK Python Project!
 
 This is a blank project for CDK development with Python.
 
