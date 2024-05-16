@@ -1,0 +1,152 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "SagemakerCdkStack": {
+        "id": "SagemakerCdkStack",
+        "path": "SagemakerCdkStack",
+        "children": {
+          "NotebookInstanceRole": {
+            "id": "NotebookInstanceRole",
+            "path": "SagemakerCdkStack/NotebookInstanceRole",
+            "children": {
+              "ImportNotebookInstanceRole": {
+                "id": "ImportNotebookInstanceRole",
+                "path": "SagemakerCdkStack/NotebookInstanceRole/ImportNotebookInstanceRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.141.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "SagemakerCdkStack/NotebookInstanceRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "sagemaker.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonSageMakerFullAccess"
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.141.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.141.0"
+            }
+          },
+          "NotebookInstance": {
+            "id": "NotebookInstance",
+            "path": "SagemakerCdkStack/NotebookInstance",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::SageMaker::NotebookInstance",
+              "aws:cdk:cloudformation:props": {
+                "defaultCodeRepository": "https://github.com/canesqal/keras-ocr-sagemaker.git",
+                "instanceType": "ml.t3.medium",
+                "notebookInstanceName": "my-notebook-instance",
+                "roleArn": {
+                  "Fn::GetAtt": [
+                    "NotebookInstanceRoleE8123527",
+                    "Arn"
+                  ]
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_sagemaker.CfnNotebookInstance",
+              "version": "2.141.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "SagemakerCdkStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "SagemakerCdkStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.141.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "SagemakerCdkStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.141.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "SagemakerCdkStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.141.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "SagemakerCdkStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.141.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.141.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.3.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.141.0"
+    }
+  }
+}
